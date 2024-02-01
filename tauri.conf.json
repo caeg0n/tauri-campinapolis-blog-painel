@@ -1,0 +1,12 @@
+{
+  "tauri": {
+    "bundle": {
+      "identifier": "campinapolis-blog",
+      "windows": {
+        "webviewInstallMode": {
+          "type": "downloadBootstrapper"
+        }
+      }
+    }
+  }
+}

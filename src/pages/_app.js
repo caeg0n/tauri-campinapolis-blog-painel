@@ -3,9 +3,9 @@ import 'prismjs/themes/prism-okaidia.css'
 import Head from 'next/head'
 import { Analytics } from '@vercel/analytics/react'
 
-const TITLE = ' MDX Editor | 一个微信排版编辑器，使用 MDX 来排版'
+const TITLE = ' MDX Editor | MDX'
 const DESCRIPTION =
-  '微信排版编辑器，使用MDX，可自定义组件、样式、生成二维码、代码 diff 高亮，可导出 markdown 和 PDF'
+  'markdown PDF'
 const FAVICON_VERSION = 3
 
 if (typeof window !== 'undefined') {
@@ -17,6 +17,7 @@ function v(href) {
 }
 
 export default function App({ Component, pageProps }) {
+  console.log("app");
   return (
     <>
       <Head>
