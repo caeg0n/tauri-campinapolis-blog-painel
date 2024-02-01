@@ -120,6 +120,14 @@ export const CopyBtn = ({ editorRef, previewRef, htmlRef, baseCss }) => {
       >
         <PrinterIcon className="w-4 h-4 mr-1" /> {t('Export PDF')}
       </Button>
+      <Button
+        variant="secondary"
+        size="sm"
+        type="button"
+        onClick={handleExportPDF}
+      >
+        <PrinterIcon className="w-4 h-4 mr-1" /> {t('PUBLICAR')}
+      </Button>
     </>
   )
 }
