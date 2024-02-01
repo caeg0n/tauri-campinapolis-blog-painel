@@ -382,7 +382,7 @@ export default function Pen({
         }
       >
         <div className="hidden sm:flex space-x-2">
-          <Share
+          {/* <Share
             editorRef={editorRef}
             onShareStart={onShareStart}
             onShareComplete={onShareComplete}
@@ -391,7 +391,7 @@ export default function Pen({
             layout={size.layout}
             responsiveSize={responsiveDesignMode ? responsiveSize : undefined}
             activeTab={activeTab}
-          />
+          /> */}
           <CopyBtn
             htmlRef={htmlRef}
             baseCss={

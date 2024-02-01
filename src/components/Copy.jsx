@@ -94,7 +94,7 @@ export const CopyBtn = ({ editorRef, previewRef, htmlRef, baseCss }) => {
   }
   return (
     <>
-      <Button
+      {/* <Button
         size="sm"
         onClick={handleClick}
         disabled={
@@ -107,7 +107,7 @@ export const CopyBtn = ({ editorRef, previewRef, htmlRef, baseCss }) => {
           <CopyIcon className="w-4 h-4 mr-1" />
         )}
         {state === 'copied' ? t('Copy Success') : t('Copy')}
-      </Button>
+      </Button> */}
 
       <Button variant="secondary" size="sm" onClick={handleExport}>
         <SaveIcon className="w-4 h-4 mr-1" /> {t('Salvar Como')}
@@ -126,7 +126,7 @@ export const CopyBtn = ({ editorRef, previewRef, htmlRef, baseCss }) => {
         type="button"
         onClick={handleExportPDF}
       >
-        <PrinterIcon className="w-4 h-4 mr-1" /> {t('PUBLICAR')}
+        <PrinterIcon className="w-4 h-4 mr-1" /> {t('Publicar')}
       </Button>
     </>
   )
