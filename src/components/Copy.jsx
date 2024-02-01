@@ -110,7 +110,7 @@ export const CopyBtn = ({ editorRef, previewRef, htmlRef, baseCss }) => {
       </Button>
 
       <Button variant="secondary" size="sm" onClick={handleExport}>
-        <SaveIcon className="w-4 h-4 mr-1" /> {t('Save As')}
+        <SaveIcon className="w-4 h-4 mr-1" /> {t('Salvar Como')}
       </Button>
       <Button
         variant="secondary"
@@ -118,7 +118,7 @@ export const CopyBtn = ({ editorRef, previewRef, htmlRef, baseCss }) => {
         type="button"
         onClick={handleExportPDF}
       >
-        <PrinterIcon className="w-4 h-4 mr-1" /> {t('Export PDF')}
+        <PrinterIcon className="w-4 h-4 mr-1" /> {t('Exportar PDF')}
       </Button>
       <Button
         variant="secondary"
