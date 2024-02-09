@@ -1,10 +1,10 @@
+'use client'
+
 import React from 'react'
 import Image from 'next/image'
-//import Pen from '../components/Pen'
 import { buttonVariants } from '@/components/ui/button'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
-
 import { getTemplates } from '../utils/database'
 import { Header } from '../components/Header'
 import {
@@ -22,6 +22,7 @@ import {
   ShareIcon,
 } from 'lucide-react'
 import { OpenAIIcon, WechatIcon } from '../components/icons'
+//import Pen from '../components/Pen'
 
 const Hero = dynamic(() => import('../components/hero/index'), {
   ssr: false,
@@ -54,28 +55,28 @@ const features = [
   },
   {
     icon: <NotepadTextIcon />,
-    text: '支持生成微信脚注',
+    text: 'c',
   },
   {
     icon: <BookOpenCheckIcon />,
 
-    text: '支持文档格式化',
+    text: 'b',
   },
   {
     icon: <ShareIcon />,
-    text: '支持文章分享',
+    text: 'a',
   },
   {
     icon: <FileTextIcon />,
-    text: '支持下载 markdown',
+    text: 'markdown',
   },
   {
     icon: <PrinterIcon />,
-    text: '支持导出 pdf',
+    text: 'pdf',
   },
   {
     icon: <OpenAIIcon />,
-    text: '对接 ChatGPT，提高写作能力',
+    text: 'ChatGPT',
   },
 ]
 
@@ -92,7 +93,7 @@ export default function Page({ data = [] }) {
         <Hero>
           <div className="mt-12 text-center">
             <div className="mt-12 text-3xl sm:text-5xl">
-              一个微信排版编辑器，使用 MDX
+              MDX
             </div>
             <div className="mt-12 flex justify-center space-x-4">
               <Link
@@ -102,7 +103,7 @@ export default function Page({ data = [] }) {
                 })}
                 href="/create"
               >
-                Web 版
+                Web
               </Link>
               <a
                 target="_blank"
@@ -111,7 +112,7 @@ export default function Page({ data = [] }) {
                 className={buttonVariants({ size: 'lg' })}
               >
                 <DownloadIcon className="w-5 h-5" />
-                <span>下载桌面版</span>
+                <span>ZZZ</span>
               </a>
             </div>
           </div>
@@ -119,10 +120,10 @@ export default function Page({ data = [] }) {
         <div className="relative">
           <section className="mt-20 px-8 text-center sm:mt-32 md:mt-40">
             <h2 className="text-3xl tracking-tight sm:text-5xl">
-              更是一个跨平台 Markdown 笔记软件
+              Markdown
             </h2>
             <p className="mx-auto mt-6 max-w-5xl text-lg">
-              使用
+              ZZ
               <a
                 target="_blank"
                 rel="noreferrer"
@@ -131,8 +132,8 @@ export default function Page({ data = [] }) {
               >
                 tauri
               </a>
-              开发了一个桌面App，支持
-              MacOS、Windows、Linux，整个应用非常轻量，安装程序小于 10 MB
+              App
+              MacOS、Windows、Linux, a, 10 MB
             </p>
 
             <div className="mt-6 flex justify-center">
@@ -149,7 +150,7 @@ export default function Page({ data = [] }) {
           </section>
           <section className=" mt-20 px-8 sm:mt-32 md:mt-40">
             <h2 className="text-center text-3xl tracking-tight sm:text-5xl">
-              MDX Editor 的能力
+              MDX Editor
             </h2>
             <ul className="mt-10 grid grid-cols-1 gap-x-16 gap-y-8 md:grid-cols-2 xl:grid-cols-4 xl:gap-y-10">
               {features.map((f, index) => (
@@ -166,12 +167,11 @@ export default function Page({ data = [] }) {
             </ul>
           </section>
           <section className="mt-20 px-8 text-center sm:mt-32 md:mt-40">
-            <h2 className="text-3xl tracking-tight sm:text-5xl">丰富模板</h2>
+            <h2 className="text-3xl tracking-tight sm:text-5xl">ZZZ</h2>
             <p className="mx-auto mt-6 max-w-3xl text-lg">
-              MDX 结合了 Markdown 和 JSX 的优点，它让你可以在 Markdown
-              文档中直接使用 React 组件，构建复杂的交互式文档。如果你熟悉
-              React，你可以在 Config
-              标签页中自定义你的组件；如果你不是一个程序员，不会使用JSX，那么你也可以基于现有模板进行创作。
+              MDX Markdown JSX React 
+              React, Config
+              JSX。
             </p>
             <div className="mt-10 grid grid-cols-2 gap-10">
               {data.map((item) => (
@@ -197,11 +197,9 @@ export default function Page({ data = [] }) {
             </div>
           </section>
           <section className="mt-20 px-8 text-center sm:mt-32 md:mt-40">
-            <h2 className="text-3xl tracking-tight sm:text-5xl">项目灵感</h2>
+            <h2 className="text-3xl tracking-tight sm:text-5xl">a</h2>
             <p className="mx-auto mt-6 max-w-3xl text-lg">
-              Markdown 是广大程序员酷爱的写作方式，但满足不了微信排版的需求，MDX
-              正好弥补了 Markdown 的缺陷。我的博客正好也是使用 MDX
-              来书写的，如何做到一次书写，排版统一？ 当我看到
+              Markdown MDX
               <a
                 className="mx-1 font-semibold text-primary"
                 target="_blank"
@@ -210,11 +208,11 @@ export default function Page({ data = [] }) {
               >
                 mdxjs playground
               </a>
-              的时候，我就在思考，能否实现类似的方案？
+              ？
             </p>
           </section>
           <section className="mt-20 px-8 text-center sm:mt-32 md:mt-40">
-            <h2 className="text-3xl tracking-tight sm:text-5xl">他们都在用</h2>
+            <h2 className="text-3xl tracking-tight sm:text-5xl">t</h2>
             <div>
               <ul className="mt-10 grid grid-cols-2 gap-x-16 gap-y-8 md:grid-cols-4 xl:gap-y-10">
                 {users.map((user) => (
@@ -229,9 +227,9 @@ export default function Page({ data = [] }) {
             </div>
           </section>
           <section className="mt-20 px-8 text-center sm:mt-32 md:mt-40">
-            <h2 className="text-3xl tracking-tight sm:text-5xl">觉得不错？</h2>
+            <h2 className="text-3xl tracking-tight sm:text-5xl">？</h2>
             <p className="mx-auto mt-6 max-w-3xl text-lg">
-              将 MDX Editor 分享给你的朋友{' '}
+              MDX Editor{' '}
               <a
                 target="_blank"
                 href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
@@ -239,7 +237,7 @@ export default function Page({ data = [] }) {
                 )}&url=https://editor.runjs.cool`}
                 className={buttonVariants()}
               >
-                一键分享到 Twitter
+                Twitter
               </a>
             </p>
           </section>

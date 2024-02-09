@@ -17,7 +17,6 @@ function v(href) {
 }
 
 export default function App({ Component, pageProps }) {
-  console.log("app");
   return (
     <>
       <Head>

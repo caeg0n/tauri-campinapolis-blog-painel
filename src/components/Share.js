@@ -1,9 +1,12 @@
+'use client'
+
 import { useState, useEffect } from 'react'
 import clsx from 'clsx'
 import { getLayoutQueryString } from '../utils/getLayoutQueryString'
 import { t } from '@/utils/i18n'
 import { Button } from '@/components/ui/button'
 import { ShareIcon, LinkIcon, Loader2 } from 'lucide-react'
+
 
 export function Share({
   initialPath,

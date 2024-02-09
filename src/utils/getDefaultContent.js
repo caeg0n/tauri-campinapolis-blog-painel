@@ -6,123 +6,137 @@ import defaultContent from 'raw-loader!./index.md'
 
 export async function getDefaultContent() {
   const html = defaultContent
-  const css = `.list-card {
-  margin: 0 auto;
-  margin-top: 30px;
-  margin-bottom: 15px;
-  max-width: 320px;
-  background: #ffffff;
-  border: 1px solid #94cff7;
-  opacity: 1;
-  border-radius: 6px;
-  padding: 5.5px;
-}
-.list-head {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin-top: -15px;
-  margin-bottom: -3px;
-}
-.list-head-line {
-  width: 7px;
-  height: 17px;
-  background: #ffffff;
-  border: 1px solid rgb(14 165 233);
-  opacity: 1;
-  border-radius: 77px;
-}
-.list-title {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgb(14 165 233);
-  border-radius: 6px;
-  text-align: center;
-  color: #fff;
-  font-size: 15px;
-}
-.markdown-body .list-card ul {
-  display: flex;
-  flex-direction: column;
-  min-height: 40px;
-  padding: 15px 10px 0 30px;
-  list-style: circle;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-.markdown-body .list-card ul li a {
-  border-bottom: 0;
-}
-.list-card ul li {
-  font-size: 14px;
-  margin-bottom: 15px;
-  color: rgb(14 165 233);
-}
-@media print {
-  body {
+  const css = `.list {
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    max-width: 320px;
+    background: #ffffff;
+    border: 1px solid #94cff7;
+    opacity: 1;
+    border-radius: 6px;
+    padding: 5.5px;
+  }
+  .list-head {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: -15px;
+    margin-bottom: -3px;
+  }
+  .list-head-line {
+    width: 7px;
+    height: 17px;
+    background: #ffffff;
+    border: 1px solid rgb(14 165 233);
+    opacity: 1;
+    border-radius: 77px;
+  }
+  .list-title {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(14 165 233);
+    border-radius: 6px;
+    text-align: center;
+    color: #fff;
+    font-size: 15px;
+  }
+  .markdown-body .list ul {
+    display: flex;
+    flex-direction: column;
+    min-height: 40px;
+    padding: 15px 10px 0 30px;
+    list-style: circle;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .markdown-body .list ul li a {
+    border-bottom: 0;
+  }
+  .list ul li {
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: rgb(14 165 233);
+  }
+  
+  .markdown-body .header p,
+  .markdown-body .header h1 {
+    color: #fff;
+  }
+  .markdown-body .header {
+    padding: 20px;
+    background: rgb(14 165 233);
+  }
+  
+  @media print {
+    body {
+      background-color: white;
+      /* padding: 20px; */
+    }
+    .markdown-body {
+      line-height: 1.5;
+    }
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .left {
+    background: rgb(14 165 233);
     padding: 20px;
   }
-  .markdown-body {
-    line-height: 1.5;
+  .left img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
   }
-}
-
-.snowfall {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-}
-
-.snowfall-bar {
-  flex-basis: 0;
-  flex-grow: 1;
-  margin: 4px;
-  display: flex;
-  justify-content: center;
-  align-items: end;
-  font-size: 10px;
-  color: #eff6ff;
-}  
+  .markdown-body {
+    font-size: 14px;
+  }
+  .markdown-body h2,
+  .markdown-body h3 {
+    margin-top: 10px;
+    margin-bottom: 0px;
+  }
+  .markdown-body h3 {
+    font-size: 18px;
+  }
+  .markdown-body .left * {
+    line-height: 1.5;
+    color: #fff;
+  }
 `
   const config = `function List({ children, title }) {
-  return (
-    <div className="list-card">
-      <div className="list-head">
-        <div className="list-head-line"></div>
-        <div className="list-head-line"></div>
-      </div>
-      <div className="list-title">{title}</div>
-      <div>{children}</div>
-    </div>
-  )
-}
-
-function Chart({ data = [], color }) {
-  return (
-    <div className="snowfall">
-      {data.map((d, i) => (
-        <div
-          key={i}
-          className="snowfall-bar"
-          style={{
-            height: d * 20,
-            backgroundColor: color,
-          }}
-        >
-          <span>{i + 1}月</span>
+    return (
+      <div className="list">
+        <div className="list-head">
+          <div className="list-head-line"></div>
+          <div className="list-head-line"></div>
         </div>
-      ))}
-    </div>
-  )
-}
-
-export default {
-  List,
-  Chart,
-}`
+        <div className="list-title">{title}</div>
+        <div>{children}</div>
+      </div>
+    )
+  }
+  
+  function Header({ name, children }) {
+    return(
+      <div className="header">
+        <h1>{name}</h1>
+        <p>{children}</p>
+      </div>
+    )
+  }
+  
+  export default {
+    Header,
+    List,
+  }
+  `
 
   // let { css: compiledCss } = await postcss([
   //   tailwindcss({

@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import juice from 'juice/client'
+import { Button } from '@/components/ui/button'
+import { CopyIcon, Loader2, PrinterIcon, SaveIcon } from 'lucide-react'
 import cheerio from 'cheerio'
 import { copyHtml, download } from './utils/index'
 import { t } from '@/utils/i18n'
-import { Button } from '@/components/ui/button'
-import { CopyIcon, Loader2, PrinterIcon, SaveIcon } from 'lucide-react'
 
 function inlineCSS(html, css) {
   return juice.inlineContent(html, css, {
@@ -39,49 +39,56 @@ export const CopyBtn = ({ editorRef, previewRef, htmlRef, baseCss }) => {
     errorText: undefined,
   })
 
-  const handleClick = async () => {
-    setState({ state: 'loading' })
-    const css = baseCss + editorRef.current.getValue('css')
-
-    //将image url 转换为 base64
-
-    const $ = cheerio.load(htmlRef.current, null, false)
-
-    $('p,section,div').each((index, element) => {
-      const $element = $(element)
-      if ($element.html().trim() === '') {
-        $element.remove()
-      }
-    })
-
-    for (let index = 0; index < $('img').length; index++) {
-      const item = $('img')[index]
-      if (item.attribs.src.includes('/api/qrcode')) {
-        const dataUrl = await toDataURL(item.attribs.src)
-        item.attribs.src = dataUrl
-      }
-    }
-    const html = $.html()
-
-    const inlineHtml = inlineCSS(html, css)
-    copyHtml(
-      inlineHtml.replace(/<div/g, '<section').replace(/<\/div>/g, '</section>')
-    )
-
-    setState({ state: 'copied' })
-    setTimeout(() => {
-      setState({ state: 'idle' })
-    }, 1000)
+  const handlePublish = async () => {
+    console.log("publicsh");
   }
+
+
+  // const handleClick = async () => {
+  //   console.log("handleclick");
+  //   setState({ state: 'loading' })
+  //   const css = baseCss + editorRef.current.getValue('css')
+
+  //   const $ = cheerio.load(htmlRef.current, null, false)
+
+  //   $('p,section,div').each((index, element) => {
+  //     const $element = $(element)
+  //     if ($element.html().trim() === '') {
+  //       $element.remove()
+  //     }
+  //   })
+
+  //   for (let index = 0; index < $('img').length; index++) {
+  //     const item = $('img')[index]
+  //     if (item.attribs.src.includes('/api/qrcode')) {
+  //       const dataUrl = await toDataURL(item.attribs.src)
+  //       item.attribs.src = dataUrl
+  //     }
+  //   }
+  //   const html = $.html()
+
+  //   const inlineHtml = inlineCSS(html, css)
+  //   copyHtml(
+  //     inlineHtml.replace(/<div/g, '<section').replace(/<\/div>/g, '</section>')
+  //   )
+
+  //   setState({ state: 'copied' })
+  //   setTimeout(() => {
+  //     setState({ state: 'idle' })
+  //   }, 1000)
+  // }
+
   const handleExport = () => {
+    console.log('html');
     let md = editorRef.current.getValue('html')
     if (md) {
       const title = md.split('\n')[0].replace('# ', '').slice(0, 50)
-
       download(title + '.mdx', md)
     }
   }
+
   const handleExportPDF = () => {
+    console.log("pdf");
     let md = editorRef.current.getValue('html')
     if (md) {
       previewRef.current.contentWindow.postMessage(
@@ -92,6 +99,7 @@ export const CopyBtn = ({ editorRef, previewRef, htmlRef, baseCss }) => {
       )
     }
   }
+
   return (
     <>
       {/* <Button
@@ -110,7 +118,7 @@ export const CopyBtn = ({ editorRef, previewRef, htmlRef, baseCss }) => {
       </Button> */}
 
       <Button variant="secondary" size="sm" onClick={handleExport}>
-        <SaveIcon className="w-4 h-4 mr-1" /> {t('Salvar Como')}
+        <SaveIcon className="w-4 h-4 mr-1" /> {'Salvar Como'}
       </Button>
       <Button
         variant="secondary"
@@ -118,15 +126,15 @@ export const CopyBtn = ({ editorRef, previewRef, htmlRef, baseCss }) => {
         type="button"
         onClick={handleExportPDF}
       >
-        <PrinterIcon className="w-4 h-4 mr-1" /> {t('Exportar PDF')}
+        <PrinterIcon className="w-4 h-4 mr-1" /> {'Exportar PDF'}
       </Button>
       <Button
-        variant="secondary"
         size="sm"
         type="button"
-        onClick={handleExportPDF}
+        disabled={false}
+        onClick={handlePublish}
       >
-        <PrinterIcon className="w-4 h-4 mr-1" /> {t('Publicar')}
+        <CopyIcon className="w-4 h-4 mr-1" /> {'Publicar'}
       </Button>
     </>
   )

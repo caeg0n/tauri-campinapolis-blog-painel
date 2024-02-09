@@ -1,3 +1,5 @@
+'use client'
+
 import { useState, useEffect } from 'react'
 import Error from 'next/error'
 import { sizeToObject } from '../utils/size'

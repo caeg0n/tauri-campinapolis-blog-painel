@@ -12,7 +12,6 @@ import { ErrorOverlay } from './ErrorOverlay'
 import Router from 'next/router'
 import { Header } from './Header'
 import { Button } from '@/components/ui/button'
-import { Share } from './Share'
 import { CopyBtn } from './Copy'
 import ThemeDropdown from './ThemeDropdown'
 import { TabBar } from './TabBar'
@@ -20,8 +19,8 @@ import { themes } from '../css/markdown-body'
 import { compileMdx } from '../hooks/compileMdx'
 import { baseCss, codeThemes } from '../css/mdx'
 import { PenSquare, Columns, MonitorSmartphone, Square } from 'lucide-react'
-
 import clsx from 'clsx'
+import { Share } from './Share'
 
 const HEADER_HEIGHT = 60 - 1
 const TAB_BAR_HEIGHT = 40
@@ -29,12 +28,12 @@ const RESIZER_SIZE = 1
 const DEFAULT_RESPONSIVE_SIZE = { width: 360, height: 720 }
 
 export default function Pen({
-  initialTheme,
   initialContent,
-  initialPath,
   initialLayout,
   initialResponsiveSize,
   initialActiveTab,
+  initialPath,
+  initialTheme,
 }) {
   const htmlRef = useRef()
   const previewRef = useRef()
@@ -137,7 +136,6 @@ export default function Pen({
         const { html } = res
         const { css } = content
         if (css || html) {
-          //编译后的html保存到ref 中
           htmlRef.current = html
           inject({
             css:
