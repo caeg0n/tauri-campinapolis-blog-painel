@@ -11,7 +11,7 @@ export default async function handler(req, res) {
   }
 
   const githubToken = process.env.GITHUB_TOKEN;
-  const owner = 'caeg0n';
+  const owner = 'caeg00n';
   const repo = 'nxt-campinapolis-blog-v2'; 
   const branch = 'main'; 
 
