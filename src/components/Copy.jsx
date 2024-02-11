@@ -7,32 +7,32 @@ import { t } from '@/utils/i18n'
 import cheerio from 'cheerio'
 import dynamic from 'next/dynamic';
 
-function inlineCSS(html, css) {
-  return juice.inlineContent(html, css, {
-    inlinePseudoElements: true,
-  })
-}
+// function inlineCSS(html, css) {
+//   return juice.inlineContent(html, css, {
+//     inlinePseudoElements: true,
+//   })
+// }
 
-function toDataURL(src, outputFormat) {
-  return new Promise((resolve) => {
-    var img = new Image()
-    img.crossOrigin = 'Anonymous'
-    img.onload = function () {
-      var canvas = document.createElement('CANVAS')
-      var ctx = canvas.getContext('2d')
-      var dataURL
-      canvas.height = this.naturalHeight
-      canvas.width = this.naturalWidth
-      ctx.drawImage(this, 0, 0)
-      dataURL = canvas.toDataURL(outputFormat)
-      resolve(dataURL)
-    }
-    img.src = src + '&a=1'
-    if (img.complete || img.complete === undefined) {
-      img.src = src + '&a=2'
-    }
-  })
-}
+// function toDataURL(src, outputFormat) {
+//   return new Promise((resolve) => {
+//     var img = new Image()
+//     img.crossOrigin = 'Anonymous'
+//     img.onload = function () {
+//       var canvas = document.createElement('CANVAS')
+//       var ctx = canvas.getContext('2d')
+//       var dataURL
+//       canvas.height = this.naturalHeight
+//       canvas.width = this.naturalWidth
+//       ctx.drawImage(this, 0, 0)
+//       dataURL = canvas.toDataURL(outputFormat)
+//       resolve(dataURL)
+//     }
+//     img.src = src + '&a=1'
+//     if (img.complete || img.complete === undefined) {
+//       img.src = src + '&a=2'
+//     }
+//   })
+// }
 
 export const CopyBtn = ({ editorRef, previewRef, htmlRef, baseCss }) => {
   const [{ state }, setState] = useState({
