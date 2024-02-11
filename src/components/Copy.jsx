@@ -1,11 +1,11 @@
-import { useState, useEffect, useRef } from 'react'
-import juice from 'juice/client'
+import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { CopyIcon, Loader2, PrinterIcon, SaveIcon } from 'lucide-react'
 import { copyHtml, download } from './utils/index'
 import { t } from '@/utils/i18n'
 import cheerio from 'cheerio'
 import dynamic from 'next/dynamic';
+import juice from 'juice/client'
 
 // function inlineCSS(html, css) {
 //   return juice.inlineContent(html, css, {
