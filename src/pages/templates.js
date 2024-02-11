@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { Header } from '../components/Header'
 
 export default function Templates({ data }) {
-  console.log('templates');
   return (
     <>
       <Header></Header>

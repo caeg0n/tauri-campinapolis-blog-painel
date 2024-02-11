@@ -21,9 +21,8 @@ export default function App({ errorCode, ...props }) {
   useEffect(() => {
     try {
       const data = JSON.parse(localStorage.getItem(id))
-
       if (data) {
-        setContent(data)
+        //setContent(data)
       }
     } catch (error) {}
   }, [id])

@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import juice from 'juice/client'
 import { Button } from '@/components/ui/button'
 import { CopyIcon, Loader2, PrinterIcon, SaveIcon } from 'lucide-react'
-import cheerio from 'cheerio'
 import { copyHtml, download } from './utils/index'
 import { t } from '@/utils/i18n'
+import cheerio from 'cheerio'
+import dynamic from 'next/dynamic';
 
 function inlineCSS(html, css) {
   return juice.inlineContent(html, css, {
@@ -40,9 +41,35 @@ export const CopyBtn = ({ editorRef, previewRef, htmlRef, baseCss }) => {
   })
 
   const handlePublish = async () => {
-    console.log("publicsh");
-  }
-
+    setState({ state: 'loading' });
+    const md = editorRef.current.getValue('html');
+    const commitMessage = "Updating content";
+    const fileName = "data/blog/new-file.mdx";
+    const fileContent = btoa(unescape(encodeURIComponent(md)));  
+    try {
+      const response = await fetch('/api/github-commit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          fileName,
+          fileContent,
+          commitMessage,
+        }),
+      });  
+      const data = await response.json();
+      if (response.ok) {
+        setState({ state: 'success' });
+        alert('Content published successfully!');
+      } else {
+        throw new Error(data.message || "Failed to publish content");
+      }
+    } catch (error) {
+      console.error('Error publishing content:', error);
+      setState({ state: 'error', errorText: error.message });
+    }
+  };
 
   // const handleClick = async () => {
   //   console.log("handleclick");
@@ -79,7 +106,6 @@ export const CopyBtn = ({ editorRef, previewRef, htmlRef, baseCss }) => {
   // }
 
   const handleExport = () => {
-    console.log('html');
     let md = editorRef.current.getValue('html')
     if (md) {
       const title = md.split('\n')[0].replace('# ', '').slice(0, 50)
@@ -88,7 +114,6 @@ export const CopyBtn = ({ editorRef, previewRef, htmlRef, baseCss }) => {
   }
 
   const handleExportPDF = () => {
-    console.log("pdf");
     let md = editorRef.current.getValue('html')
     if (md) {
       previewRef.current.contentWindow.postMessage(
