@@ -49,9 +49,10 @@ export const CopyBtn = ({ editorRef, previewRef, htmlRef, baseCss }) => {
                         tags: ['design-patterns']
                         summary: 'NestJS'
                         layout: PostSimple
-                        ---`
-    const md = editorRef.current.getValue('html');
+                        ---`.replace(/^\s+/gm, '');
+    let md = editorRef.current.getValue('html');
     md = frontMatter + md;
+    console.log(md);
     const commitMessage = 'Updating content'
     const fileName = 'data/blog/new-file.mdx'
     const fileContent = btoa(unescape(encodeURIComponent(md)))
