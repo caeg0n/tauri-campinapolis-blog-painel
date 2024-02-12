@@ -1,4 +1,0 @@
-#https://editor.runjs.cool/templates
-#https://github.com/maqi1520/mdx-editor
-#https://medium.com/@maqi1520/created-a-markdown-desktop-app-with-tauri-app-edf9ed5a384
-#sanity alternativa https://www.smashingmagazine.com/2020/12/mdx-stored-sanity-next-js-website/
