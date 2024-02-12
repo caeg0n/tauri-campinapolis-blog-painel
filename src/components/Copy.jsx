@@ -42,6 +42,7 @@ export const CopyBtn = ({ editorRef, previewRef, htmlRef, baseCss }) => {
 
   const handlePublish = async () => {
     setState({ state: 'loading' })
+    let md = editorRef.current.getValue('html');
     const frontMatter = `---
                         title: 'kkkkkkkkkkkkkkk'
                         date: '2024-02-11'
@@ -50,9 +51,7 @@ export const CopyBtn = ({ editorRef, previewRef, htmlRef, baseCss }) => {
                         summary: 'NestJS'
                         layout: PostSimple
                         ---`.replace(/^\s+/gm, '')+ '\n';
-    let md = editorRef.current.getValue('html');
     md = frontMatter + md;
-    console.log(md);
     const commitMessage = 'Updating content'
     const fileName = 'data/blog/new-file.mdx'
     const fileContent = btoa(unescape(encodeURIComponent(md)))

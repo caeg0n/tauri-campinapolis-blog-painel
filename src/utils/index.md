@@ -1,17 +1,16 @@
 <div class="flex">
-<div className="left" style={{width:'30%'}}>
-
+<div className="left" style={{marginTop:-40,width:'30%'}}>
 ## NOME_DO_AUTOR
 
 ![](https://p6-passport.byteacctimg.com/img/user-avatar/585e1491713363bc8f67d06c485e8260~300x300.image)
 
 Javascript，web
 
-### Redess
+### Redes
 
 Facebook：https://github.com/maqi1520
 
-Twitter: https://juejin.cn/user/2189882895384093
+### Contatos
 
 E-mail: maqi520@163.com
 
@@ -23,8 +22,6 @@ E-mail: maqi520@163.com
 ### SUBTITULO_DO_ARTIGO
 
 CORPO_DO_ARTIGO `AAAA` `BBBB`
-
-**NEGRITO** `前端负责人`
 
 </div>
 </div>
