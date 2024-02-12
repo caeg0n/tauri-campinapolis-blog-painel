@@ -4,7 +4,7 @@ import { CopyIcon, Loader2, PrinterIcon, SaveIcon } from 'lucide-react'
 import { copyHtml, download } from './utils/index'
 import { t } from '@/utils/i18n'
 import cheerio from 'cheerio'
-import dynamic from 'next/dynamic';
+import dynamic from 'next/dynamic'
 import juice from 'juice/client'
 
 // function inlineCSS(html, css) {
@@ -41,11 +41,22 @@ export const CopyBtn = ({ editorRef, previewRef, htmlRef, baseCss }) => {
   })
 
   const handlePublish = async () => {
-    setState({ state: 'loading' });
-    const md = editorRef.current.getValue('html');
-    const commitMessage = "Updating content";
-    const fileName = "data/blog/new-file.mdx";
-    const fileContent = btoa(unescape(encodeURIComponent(md)));  
+    setState({ state: 'loading' })
+    const frontMatter = `---
+                        title: 'kkkkkkkkkkkkkkk'
+                        date: '2024-02-11'
+                        lastmod: '2024-02-11'
+                        tags: ['design-patterns']
+                        summary: 'NestJS'
+                        layout: PostSimple
+                        ---`
+    const md = editorRef.current.getValue('html')
+    if (md) {
+      md = frontMatter + md;
+    }
+    const commitMessage = 'Updating content'
+    const fileName = 'data/blog/new-file.mdx'
+    const fileContent = btoa(unescape(encodeURIComponent(md)))
     try {
       const response = await fetch('/api/github-commit', {
         method: 'POST',
@@ -57,19 +68,19 @@ export const CopyBtn = ({ editorRef, previewRef, htmlRef, baseCss }) => {
           fileContent,
           commitMessage,
         }),
-      });  
-      const data = await response.json();
+      })
+      const data = await response.json()
       if (response.ok) {
-        setState({ state: 'success' });
-        alert('Content published successfully!');
+        setState({ state: 'success' })
+        alert('Content published successfully!')
       } else {
-        throw new Error(data.message || "Failed to publish content");
+        throw new Error(data.message || 'Failed to publish content')
       }
     } catch (error) {
-      console.error('Error publishing content:', error);
-      setState({ state: 'error', errorText: error.message });
+      console.error('Error publishing content:', error)
+      setState({ state: 'error', errorText: error.message })
     }
-  };
+  }
 
   // const handleClick = async () => {
   //   console.log("handleclick");
@@ -153,12 +164,7 @@ export const CopyBtn = ({ editorRef, previewRef, htmlRef, baseCss }) => {
       >
         <PrinterIcon className="w-4 h-4 mr-1" /> {'Exportar PDF'}
       </Button>
-      <Button
-        size="sm"
-        type="button"
-        disabled={false}
-        onClick={handlePublish}
-      >
+      <Button size="sm" type="button" disabled={false} onClick={handlePublish}>
         <CopyIcon className="w-4 h-4 mr-1" /> {'Publicar'}
       </Button>
     </>
