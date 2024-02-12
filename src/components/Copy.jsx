@@ -49,7 +49,7 @@ export const CopyBtn = ({ editorRef, previewRef, htmlRef, baseCss }) => {
                         tags: ['design-patterns']
                         summary: 'NestJS'
                         layout: PostSimple
-                        ---`.replace(/^\s+/gm, '');
+                        ---`.replace(/^\s+/gm, '')+ '\n';
     let md = editorRef.current.getValue('html');
     md = frontMatter + md;
     console.log(md);
