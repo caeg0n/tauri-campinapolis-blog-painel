@@ -50,10 +50,8 @@ export const CopyBtn = ({ editorRef, previewRef, htmlRef, baseCss }) => {
                         summary: 'NestJS'
                         layout: PostSimple
                         ---`
-    const md = editorRef.current.getValue('html')
-    if (md) {
-      md = frontMatter + md;
-    }
+    const md = editorRef.current.getValue('html');
+    md = frontMatter + md;
     const commitMessage = 'Updating content'
     const fileName = 'data/blog/new-file.mdx'
     const fileContent = btoa(unescape(encodeURIComponent(md)))
